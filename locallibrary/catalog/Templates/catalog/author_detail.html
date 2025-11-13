@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Name: {{author.name}}</h1>
+    <p>{{author.date_of_birth}}--{{author.date_of_death}}</p>
+    <hr>
+    
+    <h1>books</h1>
+    {% for book in author.book_set.all %}
+        <p>Livro: <a href="book.get_absolute_url">{{ book.title }}</a></p>
+        <p>Sumario: {{book.summary}}</p>
+    <hr>
+    {% empty %}
+        <p>este autor não tem o livro cadastrado</p>
+    {% endfor %}
+{% endblock %}
